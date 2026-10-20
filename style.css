@@ -1,0 +1,287 @@
+/* =========================================
+   БАЗОВЫЕ СТИЛИ (MOBILE FIRST)
+   Правила для смартфонов в портретном режиме
+   ========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+    color: #222;
+    background: #f4f6f9;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Контейнер занимает 100% ширины на мобильных */
+.container {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* ===== Шапка ===== */
+#page-header {
+    width: 100%;
+    background: #4a7ebb;
+    color: #fff;
+    padding: 12px 0;
+}
+
+.header-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    padding: 0 10px;
+}
+
+#logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #fff;
+    color: #2c4f7c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+#logo img {
+    display: block;
+    border-radius: 50%;
+}
+
+#site-name h1 {
+    font-size: 20px;
+    margin: 0;
+}
+
+/* ===== Навигация (вертикальный список на мобильных) ===== */
+#main-nav {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+#main-nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    display: block;
+}
+
+#main-nav a:last-child {
+    border-bottom: none;
+}
+
+/* ===== Основной контент ===== */
+/* Делаем main flex-контейнером для управления порядком секций */
+main {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    width: 100%;
+}
+
+/* Секции на мобильных занимают 100% ширины */
+section {
+    background: #fff;
+    border: 1px solid #d5dde7;
+    padding: 15px;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+section h2 {
+    margin-top: 0;
+    color: #2c4f7c;
+}
+
+/* 
+  МАГИЯ FLEXBOX ORDER: 
+  В HTML список ссылок (#links) идет первым, а таблица (#table) второй.
+  На смартфоне нужно визуально вывести таблицу выше списка ссылок.
+*/
+#table {
+    order: 1; /* Таблица визуально первая */
+}
+
+#links {
+    order: 2; /* Список ссылок визуально второй */
+}
+
+#form {
+    order: 3; /* Форма остается последней */
+}
+
+/* ===== Таблица ===== */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 8px;
+    font-size: 14px; /* Чуть уменьшаем шрифт на мобильных */
+}
+
+.data-table th,
+.data-table td {
+    border: 1px solid #9fb3cc;
+    padding: 6px 8px;
+    text-align: left;
+}
+
+.data-table thead th {
+    background: #4a7ebb;
+    color: #fff;
+    text-align: center;
+}
+
+.data-table tbody tr:nth-child(odd) {
+    background: #eaf1f9;
+}
+
+.data-table tbody tr:nth-child(even) {
+    background: #ffffff;
+}
+
+/* ===== Форма ===== */
+form label {
+    display: inline-block;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="date"],
+select,
+textarea {
+    padding: 6px 8px;
+    border: 1px solid #9fb3cc;
+    border-radius: 4px;
+    font: inherit;
+    max-width: 100%;
+}
+
+button {
+    padding: 8px 18px;
+    background: #4a7ebb;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font: inherit;
+}
+
+button:hover {
+    background: #3a6598;
+}
+
+/* ===== Подвал ===== */
+#page-footer {
+    width: 100%;
+    background: #4a7ebb;
+    color: #fff;
+    padding: 16px 0;
+    text-align: center;
+}
+
+#page-footer p {
+    margin: 0;
+    padding: 0 10px;
+}
+
+
+/* =========================================
+   MEDIA QUERY ДЛЯ ПЛАНШЕТОВ И ДЕСКТОПОВ
+   (от 768px и выше)
+   ========================================= */
+@media (min-width: 768px) {
+    
+    /* Возвращаем ограничение ширины и центрирование */
+    .container {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 0 16px;
+    }
+
+    /* Возвращаем горизонтальное расположение шапки */
+    .header-inner {
+        flex-wrap: nowrap;
+        padding: 0;
+    }
+
+    #site-name h1 {
+        font-size: 22px;
+        white-space: nowrap;
+    }
+
+    #logo {
+        width: 80px;
+        height: 80px;
+    }
+
+    /* Возвращаем горизонтальное меню */
+    #main-nav {
+        width: auto;
+        margin-left: auto;
+        flex-direction: row;
+        margin-top: 0;
+        gap: 16px;
+    }
+
+    #main-nav a {
+        border-bottom: none;
+        padding: 6px 10px;
+        border-radius: 4px;
+    }
+
+    #main-nav a:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Возвращаем стандартные отступы main */
+    main {
+        padding: 20px 0 40px;
+    }
+
+    section {
+        padding: 16px 20px;
+        margin-bottom: 24px;
+    }
+
+    /* 
+      Сбрасываем order для десктопа (чтобы порядок 
+      стал как в HTML: Ссылки -> Таблица -> Форма) 
+    */
+    #links {
+        order: 1;
+    }
+
+    #table {
+        order: 2;
+    }
+
+    /* На планшетах/десктопах таблица может быть чуть крупнее */
+    .data-table {
+        font-size: 16px;
+    }
+
+    #page-footer {
+        text-align: left;
+    }
+    
+    #page-footer p {
+        padding: 0;
+    }
+}
